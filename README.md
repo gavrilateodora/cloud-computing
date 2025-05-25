@@ -94,5 +94,6 @@ Aplicatia valideaza ca toate campurile sunt completate, iar anul publicarii treb
 Linkuri utile:
 Github: https://github.com/gavrilateodora/cloud-computing
 Vercel: https://cloud-computing-pearl.vercel.app/
+Youtube: https://youtu.be/4OG6rzE4Xv4
 
 
