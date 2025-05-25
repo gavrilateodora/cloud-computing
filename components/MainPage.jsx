@@ -42,6 +42,7 @@ const MainPage = () => {
 
   return (
     <>
+    <div className="p-4 flex justify-center text-4xl">BookShelf</div>
       <div className="p-4 flex flex-wrap gap-4">
         {data?.map((book) => (
           <div
