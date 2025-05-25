@@ -1,6 +1,6 @@
-export const getRecords = async () => {
+export const getBooks = async () => {
   try {
-    const response = await fetch("/api/records", {
+    const response = await fetch("/api/books", {
       method: "GET",
     });
 
@@ -16,9 +16,9 @@ export const getRecords = async () => {
   }
 };
 
-export const getRecord = async (id) => {
+export const getBook = async (id) => {
   try {
-    const response = await fetch(`/api/records?id=${id}`, {
+    const response = await fetch(`/api/books?id=${id}`, {
       method: "GET",
     });
 
@@ -30,9 +30,9 @@ export const getRecord = async (id) => {
   }
 };
 
-export const createRecord = async (entry) => {
+export const createBook = async (entry) => {
   try {
-    const response = await fetch("/api/records", {
+    const response = await fetch("/api/books", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -48,9 +48,9 @@ export const createRecord = async (entry) => {
   }
 };
 
-export const updateRecord = async (entry) => {
+export const updateBook = async (entry) => {
     try {
-        const response = await fetch('/api/records', {
+        const response = await fetch('/api/books', {
             method: 'PUT',
             headers: {
                 'Content-Type': 'application/json'
@@ -66,9 +66,9 @@ export const updateRecord = async (entry) => {
     }
 }
 
-export const deleteRecord = async (id) => {
+export const deleteBook = async (id) => {
   try {
-    const response = await fetch(`/api/records?id=${id}`, {
+    const response = await fetch(`/api/books?id=${id}`, {
       method: "DELETE",
     });
 

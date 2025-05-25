@@ -1,16 +1,16 @@
-import RecordForm from '@/components/RecordForm';
-import { defaultRecordValues } from '@/utils/constants'
-import { createRecord } from '@/utils/recordsFunctions';
+import BookForm from '@/components/BookForm';
+import { defaultBookValues } from '@/utils/constants'
+import { createBook } from '@/utils/booksFunctions';
 import { useRouter } from 'next/router';
 import React from 'react'
 
 const Create = () => {
     const router = useRouter();
-    const entry = defaultRecordValues;
+    const entry = defaultBookValues;
 
     const onSubmit = async (data) => {
         try {
-            const response = await createRecord(data);
+            const response = await createBook(data);
             if(response) {
                 router.push('/');
             }
@@ -19,7 +19,7 @@ const Create = () => {
         }
     }
   return (
-    <RecordForm entry={entry} onSubmit={onSubmit} />
+    <BookForm entry={entry} onSubmit={onSubmit} />
   )
 }
 

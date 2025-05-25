@@ -2,23 +2,23 @@ import { ObjectId } from "mongodb";
 import { getCollection } from "@/utils/functions";
 import { sendMethodNotAllowed, sendOk } from "@/utils/apiMethods";
 
-const COLLECTION_NAME = "records"
-const getRecords = async () => {
+const COLLECTION_NAME = "books"
+const getBooks = async () => {
     const collection = await getCollection(COLLECTION_NAME);
     return await collection.find({}).toArray();
 }
 
-const getRecord = async (id) => {
+const getBook = async (id) => {
     const collection = await getCollection(COLLECTION_NAME);
     return await collection.findOne({ _id: ObjectId.createFromHexString(id)}) 
 }
 
-const createRecord = async (data) => {
+const createBook = async (data) => {
     const collection = await getCollection(COLLECTION_NAME);
     return await collection.insertOne(data);
 }
 
-const updateRecord = async ( data) => {
+const updateBook = async ( data) => {
     const collection = await getCollection(COLLECTION_NAME);
     const id = data._id;
     delete data._id;
@@ -26,7 +26,7 @@ const updateRecord = async ( data) => {
 
 }
 
-const deleteRecord = async (id) => {
+const deleteBook = async (id) => {
     const collection = await getCollection(COLLECTION_NAME);
     return await collection.deleteOne({ _id: ObjectId.createFromHexString(id)})
 }
@@ -39,27 +39,27 @@ export default async function handler(req, res) {
   }
 
   if(req.method === "GET" && req.query.id) {
-    const record = await getRecord(req.query.id)
-    return sendOk(res, record);
+    const book = await getBook(req.query.id)
+    return sendOk(res, book);
   }
 
   if(req.method === "GET") {
-    const records = await getRecords()
-    return sendOk(res, records);
+    const books = await getBooks()
+    return sendOk(res, books);
   }
 
   if(req.method === "POST") {
-    const record = await createRecord(req.body);
-    return sendOk(res, record);
+    const book = await createBook(req.body);
+    return sendOk(res, book);
   }
 
   if(req.method === "PUT") {
-    const record = await updateRecord(req.body);
-    return sendOk(res, record);
+    const book = await updateBook(req.body);
+    return sendOk(res, book);
   }
 
   if(req.method === "DELETE") {
-    const record = await deleteRecord(req.query.id);
-    return sendOk(res, record);
+    const book = await deleteBook(req.query.id);
+    return sendOk(res, book);
   }
 }

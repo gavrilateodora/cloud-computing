@@ -1,4 +1,6 @@
-export const defaultRecordValues = {
-    name: '', 
+export const defaultBookValues = {
+    title: '', 
+    author: '',
     description: '',
+    year: null,
 }

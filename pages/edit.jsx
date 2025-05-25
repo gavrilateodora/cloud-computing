@@ -1,18 +1,18 @@
-import RecordForm from "@/components/RecordForm";
+import BookForm from "@/components/BookForm";
 import Spinner from "@/components/Spinner";
-import { defaultRecordValues } from "@/utils/constants";
-import { getRecord, updateRecord } from "@/utils/recordsFunctions";
+import { defaultBookValues } from "@/utils/constants";
+import { getBook, updateBook } from "@/utils/booksFunctions";
 import { useRouter } from "next/router";
 import React, { useEffect, useState } from "react";
 
 const Edit = () => {
   const router = useRouter();
   const [isLoading, setIsLoading] = useState(true);
-  const [entry, setEntry] = useState(defaultRecordValues);
+  const [entry, setEntry] = useState(defaultBookValues);
 
-  const handleGetRecord = async (id) => {
+  const handleGetBook = async (id) => {
     try {
-      const response = await getRecord(id);
+      const response = await getBook(id);
       if (response) {
         setEntry(response);
         setIsLoading(false);
@@ -25,7 +25,7 @@ const Edit = () => {
 
   const onSubmit = async (data) => {
     try {
-      const response = await updateRecord(data);
+      const response = await updateBook(data);
 
       if (response) {
         router.push("/");
@@ -43,12 +43,12 @@ const Edit = () => {
       router.push("/");
     }
 
-    handleGetRecord(id);
+    handleGetBook(id);
   }, []);
 
   if (isLoading) return <Spinner />;
 
-  return <RecordForm entry={entry} onSubmit={onSubmit} />;
+  return <BookForm entry={entry} onSubmit={onSubmit} />;
 };
 
 export default Edit;
